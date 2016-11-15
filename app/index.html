@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="angularTutorial" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/tacit.min.css">
+  <title>Angular 1.x tutorial</title>
+</head>
+<body>
+  <header>
+    <h1>Hi.</h1>
+  </header>
+  <nav>
+    <ul>
+      <li>
+        <a href="#/">Home</a>
+      </li>
+      <li>
+        <a href="#/foods">Foods</a>
+      </li>
+    </ul>
+  </nav>
+  <article>
+    <section>
+      <ng-view></ng-view>
+    </section>
+  </article>
+  <footer>&#169; Solita 2016</footer>
+</body>
+<script src="http://localhost:8080/bundle.js"></script>
+</html>
