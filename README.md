@@ -1,4 +1,5 @@
 # Angular 1.5.x tutorial
+- official documentation [https://docs.angularjs.org/guide/unit-testing](https://docs.angularjs.org/guide/unit-testing)
 
 ## Module (and dependency injection)
 - package/namespace for directives, controllers etc.
@@ -43,7 +44,10 @@ app.controller('FoodsCtrl', [function() {
 ## Template
 - the actual view
 - references the view model
-- little syntax checking, extremely prone to typo bugs
+- expression syntax
+  - forced evaluation with {{someExpr}}
+  - one-time binding with no recalculation with {{::someExpr}}
+- little to no syntax checking, extremely prone to typo bugs
 
 ```html
 <ul>
@@ -125,5 +129,18 @@ app.config(function($routeProvider) {
 });
 ```
 
-## Testing
-- TODO
+## Unit testing
+- ngMocks: testing and mocking utilities
+- tests run with Karma
+  - browser required, e.g. PhantomJS
+- testing libraries: Jasmine, Mocha, Chai, Sinon..
+
+```javascript
+describe('SomeCtrl', () => {
+  it('increment should update someValue', () => {
+    ctrl.someValue = 1;
+    ctrl.increment();
+    expect(someValue).toEqual(2);
+  });
+});
+```
