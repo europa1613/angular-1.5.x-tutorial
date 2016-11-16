@@ -1,5 +1,5 @@
 # Angular 1.5.x tutorial
-- official documentation [https://docs.angularjs.org/guide/unit-testing](https://docs.angularjs.org/guide/unit-testing)
+- official documentation [https://docs.angularjs.org/guide/](https://docs.angularjs.org/guide/)
 
 ## Module (and dependency injection)
 - package/namespace for directives, controllers etc.
