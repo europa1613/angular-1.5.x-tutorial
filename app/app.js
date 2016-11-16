@@ -11,8 +11,6 @@ angular.module('angularTutorial', [
     templateUrl: 'home.html'
   })
   .when('/foods', {
-    templateUrl: 'foods/foods.html',
-    controller: 'FoodsCtrl',
-    controllerAs: 'vm'
+    template: '<foods enable-addition="true"></foods>'
   })
 });

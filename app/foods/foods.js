@@ -1,8 +1,8 @@
 import FoodsService from './foods-service';
 import FoodsCtrl from './foods-controller';
-import FoodList from './foodlist-directive';
+import Foods from './foods-component';
 
 export default angular.module('foods', [])
 .service('FoodsService', FoodsService)
 .controller('FoodsCtrl', FoodsCtrl)
-.directive('foodlist', FoodList);
+.component('foods', Foods);

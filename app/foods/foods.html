@@ -1,8 +1,10 @@
 <div>
-  <label>
+  <label ng-if="vm.enableAddition">
     Add new food
     <input type="text" ng-model="vm.newFood" ng-keypress="vm.addNewFood($event.keyCode)" />
   </label>
   <h4>List of foods</h4>
-  <foodlist foods="vm.foods"></foodlist>
+  <ul>
+    <li ng-repeat="food in vm.foods">{{food.name}}</li>
+  </ul>
 </div>

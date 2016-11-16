@@ -1,4 +1,4 @@
-# Angular 1.x tutorial
+# Angular 1.5.x tutorial
 
 ## Module (and dependency injection)
 - package/namespace for directives, controllers etc.
@@ -8,7 +8,7 @@
 
 ```javascript
 angular.module('someDependency', []);
-angular.module('someModule', ['someDependency']);
+const app = angular.module('app', ['someDependency']);
 ```
 
 ## Controller
@@ -20,10 +20,9 @@ angular.module('someModule', ['someDependency']);
 - array/string syntax enables minification
 
 ```javascript
-['$http', function FoodCtrl($http) {
-  this.foods = [];
-  this.addFoo = (newFood) => $http.post('/foods', newFood);
-}];
+app.controller('FoodsCtrl', ['FoodsService', function(FoodsService) {
+  this.refreshFoods = () => FoodsService.getAll().then((response) => this.foods = response.data);
+}]);
 ```
 
 ### Two way data binding
@@ -32,9 +31,9 @@ angular.module('someModule', ['someDependency']);
 - implementation details leak into everyday work
 
 ```javascript
-[function FoodCtrl($http) {
+app.controller('FoodsCtrl', [function() {
   this.newFood = null;
-}];
+}]);
 ```
 
 ```html
@@ -55,32 +54,32 @@ angular.module('someModule', ['someDependency']);
 ## Directive
 - adds behavior to DOM elements
 - can alter the DOM
-- means to create a reusable component
-- clunky syntax, simplified by [component](https://docs.angularjs.org/guide/component)
+- means to create reusable components
+- clunky syntax, simplified by component
 
 ```javascript
-[function FoodsDirective() {
-  return {
-    restrict: 'E',
-    controller: 'FoodsCtrl',
-    templateUrl: 'foods.html'
-  };
-}];
-```
-
-```javascript
-[function AuthorizeDirective() {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-      if (kekWillsIt()) {
-        element.css('visibility', 'visible');
-      } else {
-        element.css('visibility', 'hidden');
-      }
+app.directive('authorize', [() => ({
+  restrict: 'A',
+  link: function(scope, element, attrs) {
+    if (kekWillsIt()) {
+      element.css('visibility', 'visible');
+    } else {
+      element.css('visibility', 'hidden');
     }
-  };
-}];
+  }
+})]);
+```
+## Component
+
+```javascript
+app.component('foods', {
+  templateUrl: 'foods/foods.html',
+  bindings: {
+    enableAddition: '<'
+  },
+  controller: 'FoodsCtrl',
+  controllerAs: 'vm'
+});
 ```
 
 ## Filter
@@ -98,13 +97,13 @@ angular.module('someModule', ['someDependency']);
 - factory syntax returns an object literal
 
 ```javascript
-somemodule.service('someService', function() {
+app.service('someService', function() {
   this.doStuff = function() { ... };
 });
 ```
 
 ```javascript
-somemodule.factory('someService', function() {
+app.factory('someService', function() {
   return {
     doStuff: function() { ... }
   };
@@ -114,15 +113,14 @@ somemodule.factory('someService', function() {
 ## Routes
 - ngRoute
 - each view has requires a "base" controller and template
-- component router is more modern but no longer maintained
+- components work here nicely
 
 ```javascript
 const app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
-  .when('/lulz', {
-    templateUrl: 'lulz.html',
-    controller: 'LulzCtrl'
+  .when('/foods', {
+    template: '<foods></foods>'
   });
 });
 ```
