@@ -1,15 +1,16 @@
 {
-  "name": "angular-1.x-tutorial",
+  "name": "angular-1.5.x-tutorial",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "server": "node server.js",
     "dev": "webpack-dev-server --hot --inline",
     "test": "karma start"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Massimo Prencipe",
+  "repository": "https://github.com/mprencipe/angular-1.5.x-tutorial.git",
+  "license": "MIT",
   "dependencies": {
     "angular": "^1.5.8",
     "angular-route": "^1.5.8",

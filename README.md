@@ -1,6 +1,19 @@
 # Angular 1.5.x tutorial
 - official documentation [https://docs.angularjs.org/guide/](https://docs.angularjs.org/guide/)
 
+## Example app
+- Express backend serving static content and a small API
+- Webpack (es2015)
+- Angular 1.5.x
+- Karma
+
+```javascript
+npm run server
+// starts the Express backend
+npm run dev
+// starts the Webpack bundler
+```
+
 ## Module (and dependency injection)
 - package/namespace for directives, controllers etc.
 - can declare other modules as dependencies
